@@ -1,0 +1,267 @@
+:root {
+    --primary-color: #2e7d32; /* Deep green */
+    --secondary-color: #1b5e20; /* Darker green */
+    --accent-color: #81c784; /* Light green accent */
+    --light-color: #f5f5f5; /* Off-white */
+    --dark-color: #263238; /* Dark slate */
+    --text-color: #212121; /* Almost black */
+    --text-light: #ffffff; /* White */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --section-spacing: 6rem;
+}
+
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Lato:wght@300;400;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+}
+
+/* Navigation */
+nav {
+    background-color: rgba(38, 50, 56, 0.95);
+    padding: 1.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    transition: var(--transition);
+}
+
+nav.scrolled {
+    padding: 1rem 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    position: relative;
+    font-weight: 500;
+    font-family: 'Lato', sans-serif;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: var(--transition);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.Hero-Section {
+    text-align: center;
+    padding: 12rem 1rem 8rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.Hero-Section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    animation: fadeInUp 1s ease-out;
+}
+
+.Hero-Section p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.2s forwards;
+}
+
+.Hero-Section button {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.Hero-Section button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(129, 199, 132, 0.3);
+}
+
+/* Section Styling */
+section {
+    padding: var(--section-spacing) 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.About-Section {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 3rem;
+    margin: 2rem auto;
+}
+
+.Projects-Section {
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    margin: 2rem auto;
+}
+
+.Skills-Section ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.Skills-Section li {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1.2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 500;
+    transition: var(--transition);
+    transform: scale(1);
+}
+
+.Skills-Section li:hover {
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow);
+}
+
+.Contact-Section {
+    background-color: var(--dark-color);
+    color: var(--text-light);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+}
+
+.Contact-Section a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.Contact-Section a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: var(--transition);
+}
+
+.Contact-Section a:hover::after {
+    width: 100%;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --section-spacing: 4rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+
+    .Hero-Section {
+        padding: 8rem 1rem 6rem;
+    }
+
+    .Hero-Section h1 {
+        font-size: 2.5rem;
+    }
+
+    .Skills-Section ul {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --section-spacing: 3rem;
+    }
+    
+    .Hero-Section h1 {
+        font-size: 2rem;
+    }
+    
+    section {
+        padding: 2rem 1rem;
+    }
+}
